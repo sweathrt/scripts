@@ -1,11 +1,12 @@
 #!/bin/sh
 
-# chao - choose audio output
+# chao - CHoose Audio Output
+# dependency: pulseaudio (pactl, pulsemixer), rdl (see other scripts)
 
 get_list() {
 	pulsemixer --list-sinks | awk -F',' '{print $2}' | grep 'Analog Stereo' | awk -F': ' '{print $2}'
 }
 
-sink_id=$(pulsemixer --list-sinks | grep "$(get_list | dmenu -r -l 20 -p "Choose an audio output:")" | awk -F',' '{print $1}' | sed 's/[^0-9]*//g')
+sink_id=$(pulsemixer --list-sinks | grep "$(get_list | rdl | awk -F',' '{print $1}' | sed 's/[^0-9]*//g')")
 
 pactl set-default-sink $sink_id

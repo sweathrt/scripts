@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# rdl - Run Dmenu in List mode
+
+dmenu -fn "monospace:size=11" -nb "#1a1b25" -nf "#bb9af7" -sb "#a9b1d6" -sf "#1a1b25" -l 20 -p "Choose an audio output:"
