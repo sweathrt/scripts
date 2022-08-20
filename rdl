@@ -2,4 +2,16 @@
 
 # rdl - Run Dmenu in List mode
 
-dmenu -fn "monospace:size=11" -nb "#1a1b25" -nf "#bb9af7" -sb "#a9b1d6" -sf "#1a1b25" -l 20 -p "Choose an audio output:"
+# Gentoo colors
+#normbgcolor="#1a1b25"
+#normfgcolor="#bb9af7"
+#selbgcolor="#a9b1d6"
+#selfgcolor="#1a1b25"
+
+# Void colors
+normbgcolor="#000000"
+normfgcolor="#d4d4d4"
+selbgcolor="#57ff8f"
+selfgcolor="#000000"
+
+dmenu -l 20 -p "Choose an audio output:" -fn "monospace:size=11" -nb "$normbgcolor" -nf "$normfgcolor" -sb "$selbgcolor" -sf "$selfgcolor"
