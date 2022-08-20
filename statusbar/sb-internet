@@ -6,7 +6,7 @@
 
 # specify values of the variables
 wifi_icon=""
-wifi_int="wlp3s0"
+wifi_int=$(ip a | grep 'wlp*' | awk -F':' '{ print $2 }')
 ssid=$(iw dev $wifi_int info | awk NR==5'{ $1=""; print }')
 
 case $BUTTON in
