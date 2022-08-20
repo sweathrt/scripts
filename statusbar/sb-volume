@@ -1,0 +1,29 @@
+#!/bin/sh
+
+# Prints the current volume or 🔇 if muted.
+
+case $BUTTON in
+	# runs pulsemixer twice anyway, IDK why... (tested with `if' statement, anyway doesn't work)
+	1) "$TERMINAL" -e pulsemixer ;;
+	2) pulsemixer --toggle-mute ;;
+	4) pulsemixer --change-volume +1 ;;
+	5) pulsemixer --change-volume -1 ;;
+	# 3) notify-send "📢 Volume module" "\- Shows volume 🔊, 🔇 if muted.
+	#                                     - Middle click to mute.
+	#                                     - Scroll to change." ;;
+	6) "$TERMINAL" -e "$EDITOR" "$0" ;;
+esac
+
+vol="$(pulsemixer --get-volume | awk '{print $1}')"
+
+[[ "$(pulsemixer --get-mute)" = "1" || "$vol" = "0" ]] && echo 🔇 && exit
+
+if [ "$vol" -gt "66" ]; then
+	icon=""
+elif [ "$vol" -gt "33" ]; then
+	icon=""
+else
+	icon=""
+fi
+
+echo "$icon $vol%"

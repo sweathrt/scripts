@@ -1,0 +1,32 @@
+#!/bin/sh
+
+# Show wifi 📶 and percent strength or 📡 if none.
+# Show 🌐 if connected to ethernet or ❎ if none.
+# Show 🔒 if a vpn connection is active
+
+# specify values of the variables
+wifi_icon=""
+wifi_int="wlp3s0"
+ssid=$(iw dev $wifi_int info | awk NR==5'{ $1=""; print }')
+
+case $BUTTON in
+	1) "$TERMINAL" -e nmtui; pkill -RTMIN+2 dwmblocks ;;
+	#3) notify-send "🌐 Internet module" "\- Click to connect
+        #                                        ❌: wifi disabled
+        #                                        📡: no wifi connection
+        #                                        📶: wifi connection with quality
+        #                                        ❎: no ethernet
+        #                                        🌐: ethernet working
+        #                                        🔒: vpn is active
+        #                                    " ;;
+	6) "$TERMINAL" -e "$EDITOR" "$0" ;;
+esac
+
+# if grep -xq 'up' /sys/class/net/w*/operstate 2>/dev/null ; then
+# 	wifi_strength="$(awk '/^\s*w/ { print int($3 * 100 / 70) }' /proc/net/wireless)"
+if grep -xq 'down' /sys/class/net/w*/operstate 2>/dev/null ; then
+	grep -xq '0x1003' /sys/class/net/w*/flags && wifiicon="📡 " || wifiicon="❌ "
+fi
+
+printf "%s%s%s\n" "$wifi_icon$ssid"
+# "$(sed "s/down/❎/;s/up/🌐/" /sys/class/net/e*/operstate 2>/dev/null)" "$(sed "s/.*/🔒/" /sys/class/net/tun*/operstate 2>/dev/null)"

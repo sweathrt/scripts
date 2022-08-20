@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# dependencies: pywal xdotool nitrogen
+
+wallDir=$HOME/.local/share/wallpapers/
+
+# if there are no arguments or a wallpaper with the given name doesn't exist
+if [[ "$1" = "" || !(-f "$wallDir/$1.png" || -f "$wallDir/$1.jpg" || -f "$wallDir/$1.jpeg") ]]; then
+	# randomly pick a wallpaper from ~/git/walls/ dir
+	wall="$(find "$wallDir" -type f -name "*.png" -o -name "*.jpg" -o -name "*.jpeg" | shuf -n1)"	
+else
+	# select the wallpaper that matches the given name
+	wall="$(find "$wallDir" -type f -name "$1.png" -o -name "$1.jpg" -o -name "$1.jpeg")"
+fi
+
+# set wallpaper
+nitrogen --set-scaled $wall
+
+# generate a color palette relative to the wallpaper chosen
+#wal -c 
+#wal -i $wall -n >/dev/null
+#
+## delete unnecessary lines efrom a dwm theme file (the one which requires a patch)
+#sed -i '/SchemeUrg\|urg/d' $HOME/.cache/wal/colors-wal-dwm.h
+#
+## build dwm (create a !LOCAL! '.rootpw' file in the $HOME dir that stores the root password)
+#cd $HOME/.local/src/dwm && sudo -S < <(echo $(cat $HOME/documents/.rootpw)) make clean install >/dev/null
+#
+## reset sudo's user credentials timer
+#sudo -k
+#
+## imitate pressing the key combination
+#xdotool key super+shift+q

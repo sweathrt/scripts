@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# the script to get the current keyboard layout (corresponding language)
+
+# dependency: xkblayout-state
+# credits: nonpop (https://github.com/nonpop/xkblayout-state)
+
+echo "$(xkblayout-state print %s | sed 's/[^a-z]*//g') "
