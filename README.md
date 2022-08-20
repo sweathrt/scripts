@@ -1,2 +1,2 @@
-# scripts
+# bin
 my personal scripts
