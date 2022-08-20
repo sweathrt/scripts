@@ -2,25 +2,16 @@
 
 # Create symlinks from the $HOME, $HOME/.config, $HOME/.local/src/, $HOME/.local/share to any desired dotfiles in $HOME/dotfiles/
 
-# Dotfiles dir
+# Directories declaration
 dir=$HOME/dotfiles
 config_dir=$HOME/dotfiles/.config
-src_dir=$HOME/dotfiles/.local/src
-bin_dir=$HOME/dotfiles/.local/bin
-share_dir=$HOME/dotfiles/.local/share
 
 # Below is the list of files to be symlinked
 
 # $HOME files
 home_files=".zprofile"
 # $HOME/.config files
-config_files="aliases fontconfig nvim user-dirs.dirs zsh x11"
-# $HOME/.local/src files
-src_files="dmenu dwm dwmblocks st"
-# $HOME/.local/bin files
-bin_files="chao make-symlinks restart-dwm setbg statusbar"
-# $HOME/.local/share files
-share_files="wallpapers"
+config_files="aliases fontconfig neofetch nvim user-dirs.dirs wgetrc x11 zsh"
 
 # Create symlinks from $HOME to $HOME/dotfiles
 for file in $home_files; do
@@ -34,25 +25,4 @@ for file in $config_files; do
 	[ -e $HOME/.config/$file ] && rm $HOME/.config/$file
 	echo "Creating a symlink to $file in $HOME/.config."
 	[ -e $config_dir/$file ] && ln -s $config_dir/$file $HOME/.config/$file
-done
-
-# Create symlinks from $HOME/.local/src to $HOME/dotfiles/.local/src
-for file in $src_files; do
-	[ -e $HOME/.local/src/$file ] && rm $HOME/.local/src/$file
-	echo "Creating symlink to $file in $HOME/dotfiles/.local/src."
-	[ -e $src_dir/$file ] && ln -s $src_dir/$file $HOME/.local/src/$file
-done
-
-# Create symlinks from $HOME/.local/bin to $HOME/dotfiles/.local/bin
-for file in $bin_files; do
-	[ -e $HOME/.local/bin/$file ] && rm $HOME/.local/bin/$file
-	echo "Creating symlink to $file in $HOME/dotfiles/.local/bin."
-	[ -e $bin_dir/$file ] && ln -s $bin_dir/$file $HOME/.local/bin/$file
-done
-
-# Create symlinks from $HOME/.local/share to $HOME/dotfiles/.local/share
-for file in $share_files; do
-	[ -e $HOME/.local/share/$file ] && rm $HOME/.local/share/$file
-	echo "Creating symlink to $file in $HOME/dotfiles/.local/share."
-	[ -e $share_dir/$file ] && ln -s $share_dir/$file $HOME/.local/share/$file
 done
