@@ -1,17 +1,19 @@
 #!/bin/sh
 
-# rdl - Run Dmenu in List mode
+# rdl - Run Dmenu in the List mode
+
+# Define colors of the prompt
 
 # Gentoo colors
-#normbgcolor="#1a1b25"
-#normfgcolor="#bb9af7"
-#selbgcolor="#a9b1d6"
-#selfgcolor="#1a1b25"
+normbgcolor="#1a1b25"
+normfgcolor="#a9b1d6"
+selbgcolor="#bb9af7"
+selfgcolor="#1a1b25"
 
 # Void colors
-normbgcolor="#000000"
-normfgcolor="#d4d4d4"
-selbgcolor="#57ff8f"
-selfgcolor="#000000"
+#normbgcolor="#000000"
+#normfgcolor="#d4d4d4"
+#selbgcolor="#57ff8f"
+#selfgcolor="#000000"
 
-dmenu -l 20 -p "Choose an audio output:" -fn "monospace:size=11" -nb "$normbgcolor" -nf "$normfgcolor" -sb "$selbgcolor" -sf "$selfgcolor"
+dmenu -r -l 20 -p "Choose an audio output:" -fn "monospace:size=11" -nb "$normbgcolor" -nf "$normfgcolor" -sb "$selbgcolor" -sf "$selfgcolor"
