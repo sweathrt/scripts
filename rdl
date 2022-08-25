@@ -16,4 +16,4 @@ selfgcolor="#1a1b25"
 #selbgcolor="#57ff8f"
 #selfgcolor="#000000"
 
-dmenu -r -l 20 -p "Choose an audio output:" -fn "monospace:size=11" -nb "$normbgcolor" -nf "$normfgcolor" -sb "$selbgcolor" -sf "$selfgcolor"
+dmenu -r -l 20 -p "Choose an audio output:" -fn "monospace:size=15" -nb "$normbgcolor" -nf "$normfgcolor" -sb "$selbgcolor" -sf "$selfgcolor"
