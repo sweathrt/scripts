@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# dependencies: pywal xdotool nitrogen
+# dependencies: pywal xdotool xwallpaper
 
-wallDir=$HOME/.local/share/wallpapers/
+wallDir=${XDG_DATA_HOME:-$HOME/.local/share}/wallpapers/
 
 # if there are no arguments or a wallpaper with the given name doesn't exist
 if [[ "$1" = "" || !(-f "$wallDir/$1.png" || -f "$wallDir/$1.jpg" || -f "$wallDir/$1.jpeg") ]]; then
@@ -14,7 +14,7 @@ else
 fi
 
 # set wallpaper
-nitrogen --set-scaled $wall
+xwallpaper --zoom $wall
 
 # generate a color palette relative to the wallpaper chosen
 #wal -c 

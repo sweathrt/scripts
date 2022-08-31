@@ -11,7 +11,7 @@ config_dir=$HOME/dotfiles/.config
 # $HOME files
 home_files=".zprofile"
 # $HOME/.config files
-config_files="aliases fontconfig neofetch nvim user-dirs.dirs wgetrc x11 zsh"
+config_files="aliases fontconfig neofetch nvim picom user-dirs.dirs wgetrc x11 zsh"
 
 # Create symlinks from $HOME to $HOME/dotfiles
 for file in $home_files; do

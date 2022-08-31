@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# A wrapper script to call lua-language-server from CLI
+
+[ -f "$HOME/.local/bin/lua-language-server/bin/lua-language-server" ] && "$HOME/.local/bin/lua-language-server/bin/lua-language-server" "$@"
