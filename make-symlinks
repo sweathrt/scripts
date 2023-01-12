@@ -3,15 +3,15 @@
 # Create symlinks from the $HOME, $HOME/.config, $HOME/.local/src/, $HOME/.local/share to any desired dotfiles in $HOME/dotfiles/
 
 # Directories declaration
-dir=$HOME/dotfiles
-config_dir=$HOME/dotfiles/.config
+dir=$HOME/.dots
+config_dir=$HOME/.dots/.config
 
 # Below is the list of files to be symlinked
 
 # $HOME files
 home_files=".zprofile"
 # $HOME/.config files
-config_files="aliases fontconfig neofetch nvim picom user-dirs.dirs wgetrc x11 zsh"
+config_files="aliases fontconfig kitty mpv neofetch picom user-dirs.dirs wireplumber x11 zsh"
 
 # Create symlinks from $HOME to $HOME/dotfiles
 for file in $home_files; do
